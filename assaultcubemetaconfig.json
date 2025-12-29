@@ -1,0 +1,10 @@
+[
+  {
+    "ConfigFile": "config/servercmdline.txt",
+    "AutoMap": true,
+    "Importable": true,
+    "ConfigType": "kvp",
+    "ConfigFormat": "{0} {1}",
+    "ConfigFormatRegex": "^(?:\\/\\/|#)?\\s*(?<key>\\S+)\\s+(?<value>.*)$"
+  }
+]
