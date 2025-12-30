@@ -23,5 +23,13 @@
     "UpdateSourceData": "/bin/bash",
     "UpdateSourceArgs": "-c \"cd '{{$FullRootDir}}' && tar -xjf assaultcube.tar.bz2 && rm -f assaultcube.tar.bz2\"",
     "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "Ensure Server Binary Executable",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-c \"chmod +x '/home/amp/.ampdata/instances/ac01/assault_cube/bin_unix/linux_64_server || true\"",
+    "SkipOnFailure": false
   }
 ]
