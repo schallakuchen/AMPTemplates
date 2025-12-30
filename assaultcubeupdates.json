@@ -1,10 +1,35 @@
 [
   {
-    "UpdateStageName": "AssaultCube Download+Extract",
+    "UpdateStageName": "Create AssaultCube Root Directory",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "CreateDirectory",
+    "UpdateSourceArgs": "{{$FullRootDir}}",
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "Download AssaultCube Linux Server",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "FetchURL",
+    "UpdateSourceData": "https://github.com/assaultcube/AC/releases/download/v1.3.0.2/AssaultCube_v1.3.0.2_LockdownEdition_RC1.tar.bz2",
+    "UpdateSourceTarget": "{{$FullRootDir}}",
+    "UpdateSourceArgs": "assaultcube.tar.bz2",
+    "OverwriteExistingFiles": true,
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "Extract AssaultCube",
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-lc \"set -euo pipefail;\ncd '{{$FullBaseDir}}';\nmkdir -p assaultcube;\nurl='https://github.com/assaultcube/AC/releases/download/v1.3.0.2/AssaultCube_v1.3.0.2_linux.tar.gz';\ntmp='assaultcube/ac.tar.gz';\necho 'Downloading AssaultCube...';\nwget -qO \\\"$tmp\\\" \\\"$url\\\";\necho 'Extracting...';\n( tar -xzf \\\"$tmp\\\" -C assaultcube --strip-components=1 2>/dev/null || tar -xzf \\\"$tmp\\\" -C assaultcube );\nrm -f \\\"$tmp\\\";\nchmod +x assaultcube/bin_unix/linux_64/ac_server || true;\nmkdir -p assaultcube/config;\nif [ ! -f assaultcube/config/server.conf ]; then\n  cat > assaultcube/config/server.conf <<'EOF'\nserverport {{$ServerPort}}\nmaxclients {{MaxClients}}\nservername \\\"{{ServerName}}\\\"\nEOF\nfi\necho 'AssaultCube installed.'\"\n",
+    "UpdateSourceArgs": "-c \"cd '{{$FullRootDir}}' && tar -xjf assaultcube.tar.bz2 && rm -f assaultcube.tar.bz2\"",
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "Ensure Server Binary Executable",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-c \"chmod +x '{{$FullRootDir}}'/AssaultCube/bin_unix/linux_64/ac_server || true\"",
     "SkipOnFailure": false
   }
 ]
