@@ -29,7 +29,7 @@
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c \"chmod +x '{{$FullRootDir}}'/assault_cube/bin_unix/linux_64_server || true\"",
+    "UpdateSourceArgs": "-c \"chmod +x '{{$FullRootDir}}'assault_cube/bin_unix/linux_64_server || true\"",
     "SkipOnFailure": false
   }
 ]
