@@ -1,5 +1,5 @@
-Meta.DisplayName=Minetest2 (Legacy)
-Meta.Description=Minetest2 (Legacy) Dedicated Server for versions up to 5.9.1
+Meta.DisplayName=Minetest (Legacy)
+Meta.Description=Minetest (Legacy) Dedicated Server for versions up to 5.9.1
 Meta.OS=Windows, Linux
 Meta.AarchSupport=Unknown
 Meta.Arch=x86_64
